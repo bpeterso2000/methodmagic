@@ -47,7 +47,23 @@
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__del__</span>(self)</div>
-                      <div class="column">If __new__ and __init__ form the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the statement del x Rather; it defines behavior for when the object is garbage collected. It can be quite useful for objects that might require extra cleanup upon deletion, like sockets or file objects. Be careful, however, as there is no guarantee that __del__ will be executed if the object is still alive when the interpreter exits; __del__ isn't a replacement for good coding practices.</div>
+                      <div class="column">
+                        If __new__ and __init__ form the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the
+                        statement del x Rather; it defines behavior for when the object is garbage collected. It can be quite useful for objects that might
+                        require extra cleanup upon deletion, like sockets or file objects. 
+                      </div>
+                    </div>
+                    <div class="column">
+                      <article class="message is-warning">
+                        <div class="message-header">
+                          <p>Warning</p>
+                          <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body ">
+                          There is no guarantee that __del__ will be executed if the object is still alive when the interpreter exits;
+                          __del__ isn't a replacement for good coding practices.
+                        </div>
+                      </article>
                     </div>
                   </div>
                 </div>
@@ -414,7 +430,7 @@
                       <div class="column is-one-fifth">self /= other</div>
                       <div class="column">operator.itruediv</div>
                     </div>
-                    <div class="columns">
+                    <div class="column">
                       <article class="message is-info">
                         <div class="message-header">
                           <p>Note</p>
@@ -524,17 +540,17 @@
                       <div class="column">
                         Method to implement mixed mode arithmetic. __coerce__ should return None if type conversion is impossible. Otherwise, it should return a pair (2-tuple) of self and other, manipulated to have the same type.
                       </div>
-                      <div class="column">
-                        <article class="message is-info">
-                          <div class="message-header">
-                            <p>Info</p>
-                            <button class="delete" aria-label="delete"></button>
-                          </div>
-                          <div class="message-body ">
-                            __coerce__ is deprecated in Python 3. 
-                          </div>
-                        </article>
-                      </div>
+                    </div>
+                    <div class="column">
+                      <article class="message is-info">
+                        <div class="message-header">
+                          <p>Info</p>
+                          <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body ">
+                          __coerce__ is deprecated in Python 3. 
+                        </div>
+                      </article>
                     </div>
                   </div>
                 </div>
@@ -570,7 +586,7 @@
                     <div class="column">
                       <article class="message is-info">
                         <div class="message-header">
-                          <p>Info</p>
+                          <p>Note</p>
                           <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body ">
@@ -598,17 +614,17 @@
                       <div class="column">
                         Defines behavior for when bool() is called on an instance of your class. Should return True or False, depending on whether you would want to consider the instance to be True or False.
                       </div>
-                      <div class="column">
-                        <article class="message is-info">
-                          <div class="message-header">
-                            <p>Info</p>
-                            <button class="delete" aria-label="delete"></button>
-                          </div>
-                          <div class="message-body ">
-                            In Python 2 __bool__ is named __nonzero__. 
-                          </div>
-                        </article>
-                      </div>
+                    </div>
+                    <div class="column">
+                      <article class="message is-info">
+                        <div class="message-header">
+                          <p>Note</p>
+                          <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body ">
+                          In Python 2 it's named __nonzero__; it was renamed to __bool__ in Python 3. 
+                        </div>
+                      </article>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
@@ -924,7 +940,7 @@
                     <p>
                       Pickling isn't just for built-in types. It's for any class that follows the pickle protocol. The pickle protocol has four optional methods for Python objects to customize how they act.
                     </p>
-                    <div class="is-divider"></div>                 
+                    <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__getinitargs__</span>(self, key)</div>
                       <div class="column">
@@ -956,7 +972,12 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__reduce__</span>(self)</div>
                       <div class="column">
-                        When defining extension types (i.e., types implemented using Python's C API), you have to tell Python how to pickle them if you want them to pickle them. __reduce__() is called when an object defining it is pickled. It can either return a string representing a global name that Python will look up and pickle, or a tuple. The tuple contains between 2 and 5 elements: a callable object that is called to recreate the object, a tuple of arguments for that callable object, state to be passed to __setstate__(optional), an iterator yielding list items to be pickled (optional), and an iterator yielding dictionary items to be pickled (optional).
+                        When defining extension types (i.e., types implemented using Python's C API), you have to tell Python how
+                        to pickle them if you want them to pickle them. __reduce__() is called when an object defining it is pickled.
+                        It can either return a string representing a global name that Python will look up and pickle, or a tuple. The
+                        tuple contains between 2 and 5 elements: a callable object that is called to recreate the object, a tuple of
+                        arguments for that callable object, state to be passed to __setstate__(optional), an iterator yielding list
+                        items to be pickled (optional), and an iterator yielding dictionary items to be pickled (optional).
                       </div>
                     </div>
                     <div class="is-divider"></div>
@@ -1206,6 +1227,11 @@
 
           </div>
         </section>
+        <div class="is-divider" data-content="Links to Python magic method tutorials"></div>
+          <p>
+            <a class="button is-link" href="https://rszalski.github.io/magicmethods">A guide to Python's magic methods</a>
+            <a class="button is-link" href="https://dbader.org/blog/python-dunder-methods">Python dunder methods</a>
+          </p>
         <div class="is-divider" data-content="Licensed under Creative Commons CC--NC-BY-SA"></div>
         <div class="columns">
           <div class="column is-one-quarter">
