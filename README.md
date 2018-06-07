@@ -1,0 +1,1 @@
+A Python magic methods web pages adapted from Rafe Kettler's [Guide to Python's Magic Methods](https://github.com/RafeKettler/magicmethods).
