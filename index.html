@@ -425,7 +425,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Augmented Operators (iadd, isub, imul, ifloordiv, itruediv, imod, ipow, ilshift, irshift, iand, ior, ixor)</p>
+                <p>Augmented Assignment Operators (iadd, isub, imul, ifloordiv, itruediv, imod, ipow, ilshift, irshift, iand, ior, ixor)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -527,7 +527,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Type Conversion (bool, int, long, float, complex, oct, hex, index, trunc)</p>
+                <p>Type Conversion (bool, int, float, complex, oct, hex, index, trunc)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -575,7 +575,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__trunc__</span>(self)</div>
                       <div class="column">
-                        Called when math.trunc(self) is called. __trunc__ should return the value of `self truncated to an integral type (usually a long).
+                        Called when math.trunc(self) is called. __trunc__ should return the value of `self truncated to an integral type.
                       </div>
                     </div>
                   </div>
@@ -1132,7 +1132,7 @@
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__div__</div>
-                      <div class="column">Removed in Python since division defaults to true.</div>
+                      <div class="column">Removed in Python 3 since division defaults to true.</div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
@@ -1140,6 +1140,13 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__coerce__</div>
                       <div class="column">Removed in Python 3 due to redundant, confusing behavior.</div>
+                    </div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="div-table">
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth has-text-weight-bold">__long__</div>
+                      <div class="column">The <span class="is-italic">long</span> type was dropped in Python 3.</div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
