@@ -527,7 +527,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Type Conversion (bool, int, float, complex, oct, hex, index)</p>
+                <p>Type Conversion (bool, int, float, complex, oct, hex)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -563,13 +563,6 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__hex__</span>(self)</div>
                       <div class="column">hex</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__index__</span>(self)</div>
-                      <div class="column">
-                        Implements type conversion to an int when the object is used in a slice expression. If you define a custom numeric type that might be used in slicing, you should define __index__.
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -689,12 +682,26 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Sequence (len, getitem, setitem, delitem, contains, missing)</p>
+                <p>Sequence (len, index, getitem, setitem, delitem, contains, missing)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="div-table">
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__len__</span>(self)</div>
+                      <div class="column">
+                        Returns the length of the collection.
+                      </div>
+                    </div>
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__index__</span>(self)</div>
+                      <div class="column">
+                        Converts to an int when the object is used in a slice expression. If you define a custom numeric type that might be used in slicing, you should define __index__.
+                      </div>
+                    </div>
+                    <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__getitem__</span>(self, key)</div>
                       <div class="column">
@@ -771,7 +778,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Reflection (instancecheck, subclasscheck)</p>
+                <p>Reflection (instancecheck, subclasscheck, subclasshook)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -793,7 +800,14 @@
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__subclasscheck__</span>(self, subclass)</div>
                       <div class="column">
                         issubclass(self, subclass); Checks if a class subclasses the class you defined
-                        (e.g. issubclass(subclass, class)).
+                        (e.g. issubclass(subclass, class).
+                      </div>
+                    </div>
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__subclasshook__</span>(self, ABC)</div>
+                      <div class="column">
+                        Checks if a class subclasses the Abstract Base Class you defined.
                       </div>
                     </div>
                   </div>
