@@ -578,7 +578,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Representation & Format (str, repr, bytes, format, hash, dir, sizeof)</p>
+                <p>Representation & Format (str, repr, bytes, format, hash, sizeof)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -618,13 +618,6 @@
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__dir__</span>(self)</div>
-                      <div class="column">
-                         Defines behavior for when dir() is called on an instance of your class. This method should return a list of attributes for the user. Typically, implementing __dir__ is unnecessary, but it can be vitally important for interactive use of your classes if you redefine __getattr__ or __getattribute__(which you will see in the next section) or are otherwise dynamically generating attributes.
-                      </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__sizeof__</span>(self)</div>
                       <div class="column">
                         Defines behavior for when sys.getsizeof() is called on an instance of your class. This should return the size of your object, in bytes. This is generally more useful for Python classes implemented in C extensions, but it helps to be aware of it.
@@ -637,7 +630,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Attribute Access (getattr, setattr, delattr)</p>
+                <p>Attribute Access (getattribute, getattr, setattr, delattr, dir)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -656,9 +649,16 @@
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__getattribute__</span>(self, name)</div>
+                      <div class="column">
+                        self.name; You can define behavior for when a user attempts to access an attribute, Python will call it on every reference to any attribute or method name except magic methods.
+                      </div>
+                    </div>
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__getattr__</span>(self, name)</div>
                       <div class="column">
-                        self.name; You can define behavior for when a user attempts to access an attribute that doesn't exist (either at all or yet). This can be useful for catching and redirecting common misspellings, giving warnings about using deprecated attributes (you can still choose to compute and return that attribute, if you wish), or deftly handing an AttributeError. It only gets called when a nonexistent attribute is accessed, however, so it isn't a true encapsulation solution.
+                        self.name; You can define behavior for when a user attempts to access an attribute that doesn't exist (either at all or yet). This can be useful for catching and redirecting common misspellings, giving warnings about using deprecated attributes (you can still choose to compute and return that attribute, if you wish), or deftly handing an AttributeError. It only gets called when a nonexistent attribute is accessed.
                       </div>
                     </div>
                     <div class="is-divider"></div>
@@ -673,6 +673,13 @@
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__delattr__</span>(self, name)</div>
                       <div class="column">
                         del self.name; This is the exact same as __setattr__, but for deleting attributes instead of setting them. The same precautions need to be taken as with __setattr__ as well in order to prevent infinite recursion (calling del self.name in the implementation of __delattr__ would cause infinite recursion).
+                      </div>
+                    </div>
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__dir__</span>(self)</div>
+                      <div class="column">
+                         Defines behavior for when dir() is called on an instance of your class. This method should return a list of attributes for the user. Typically, implementing __dir__ is unnecessary, but it can be vitally important for interactive use of your classes if you redefine __getattr__ or __getattribute__(which you will see in the next section) or are otherwise dynamically generating attributes.
                       </div>
                     </div>
                   </div>
