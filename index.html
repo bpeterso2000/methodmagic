@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Python Magic Methods</title>
+    <title>Python Magic (AKA Dunder, Special) Methods</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.34/bulma-accordion/dist/bulma-accordion.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.34/bulma-divider/dist/bulma-divider.min.css">
@@ -13,16 +13,52 @@
   <body>
     <section class="section">
       <div class="container">
-        <h1 class="title">
-          Python Magic Methods
-        </h1>
+        <div class="columns">
+          <div class="column is-one-fifth">
+            <img src="https://openclipart.org/download/235806/1451787462.svg" alt="magician">
+          </div>
+          <div class="column">
+            <h1 class="title">Python Magic Methods</h1>
+            <h6 class="subtitle is-6 is-italic">AKA special methods or dunder methods</h6>
+            <p>
+              Adapted from Rafe Kettler's <span class="is-italic">A Guide to Python's Magic Methods</span> 
+              <a href="http://www.github.com/RafeKettler/magicmethods">project</a>. This page was primarily designed to serve as a comprehensive catalog of Python 3 magic methods grouped and neatly categorized all in one place.  If you're interested in learning more about magic methods consider visiting the links below.
+            </p>
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-multiline">
+          <p class="control">
+            <a class="button is-small is-link" href="https://dbader.org/blog/python-dunder-methods">
+              <span class="icon is-small"><i class="fas fa-link"></i></span>
+              <span>Enriching Your Python Classes With Dunder Methods</span>
+            </a>
+          </p>
+
+          <p class="control">
+            <a class="button is-small is-link" href="http://www.diveintopython3.net/special-method-names.html#divingin">
+              <span class="icon is-small"><i class="fas fa-link"></i></span>
+              <span>Dive into Python 3: Special Method Names</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-small is-link" href="https://rszalski.github.io/magicmethods">
+              <span class="icon is-small"><i class="fas fa-link"></i></span>
+              <span>A guide to Python's Magic Methods</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="button is-small is-link" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">
+              <span class="icon is-small"><i class="fas fa-link"></i></span>
+              <span>Python Language Reference: Special Methods</span>
+            </a>
+          </p>
+        </div>
+        <div class="is-divider" data-content="Python Magic Method Catalog"></div>
         <p>
-          Adapted from Rafe Kettler's <a href="http://www.github.com/RafeKettler/magicmethods">Guide to Python's Magic Methods</a>.  Click on a header to expand/collapse a section.
+          Click on a header to expand/collapse a section.
         </p>
-        <div class="is-divider"></div>
         <section class="accordions">
           <div class="container">
-
             <article class="accordion is-active">
               <div class="accordion-header toggle">
                 <p>Construction, Initialization &amp; Destruction (new, init, del)</p>
@@ -34,23 +70,26 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__new__</span>(cls, ...)</div>
                       <div class="column">
-                        Called before __init__. It takes the class, then any other arguments that it will pass along to __init__. __new__ is
-                        rarely used, but is useful when subclassing an immutable type like a tuple or a string.  See the Python docs for
-                        details.
+                        Called before <span class="is-italic">__init__</span>. It takes the class, then any other arguments that it will pass along to
+                        <span class="is-italic">__init__</span>. The <span class="is-italic">__new__</span> method is rarely included in Python class definitions but is useful when subclassing an immutable type like a tuple or a string.
+                        See the <a href="https://docs.python.org/3/reference/datamodel.html#object.__new__">Python docs</a> for details.
                       </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__init__</span>(self, ...)</div>
-                      <div class="column">Object initialization.</div>
+                      <div class="column">
+                        Object initialization; it gets passed whatever the primary constructor <span class="is-italic">__new__</span> was called
+                        with. Most Python class definitions contain an <span class="is-italic">__init__</span> method.
+                      </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__del__</span>(self)</div>
                       <div class="column">
-                        If __new__ and __init__ form the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the
-                        statement del x Rather; it defines behavior for when the object is garbage collected. It can be quite useful for objects that might
-                        require extra cleanup upon deletion, like sockets or file objects. 
+                        If <span class="is-italic">__new__</span> and <span class="is-italic">__init__</span> form the constructor of the object, <span class="is-italic">__del__</span> is the destructor. It doesn't implement
+                        behavior for the statement <span class="is-italic">del x</span> Rather; it defines behavior for when the object is garbage collected. It can
+                        be quite useful for objects that might require extra cleanup upon deletion, like sockets or file objects. 
                       </div>
                     </div>
                     <div class="column">
@@ -72,66 +111,52 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Comparison Operators (eq, ne, lt, gt, lte, gte)</p>
+                <p>Comparison Operators (eq, ne, lt, gt, lte, gte, truth)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="div-table">
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__cmp__</span>(self, other)</div>
-                      <div class="column">
-                        Implements a default behavior for all of the comparison operators (&lt;, ==, !=, etc.), It's usually best to define each comparison you need rather than define them all at once, but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented with similar criteria.
-                      </div>
-                    </div>
-                    <div class="columns is_gapless">
-                      <div class="column">
-                        <article class="message is-info">
-                          <div class="message-header">
-                            <p>Info</p>
-                            <button class="delete" aria-label="delete"></button>
-                          </div>
-                          <div class="message-body ">
-                            __cmp__ is deprecated in Python 3. 
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__eq__</span>(self, other)</div>
                       <div class="column is-one-fifth">self == other</div>
-                      <div class="column">operator.eq</div>
+                      <div class="column">operator.eq; defines behavior for the equality operator, ==.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__ne__</span>(self, other)</div>
                       <div class="column is-one-fifth">self != other</div>
-                      <div class="column">operator.ne</div>
+                      <div class="column">operator.ne; defines behavior for the inequality operator, !=.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__lt__</span>(self, other)</div>
                       <div class="column is-one-fifth">self &lt; other</div>
-                      <div class="column">operator.lt</div>
+                      <div class="column">operator.lt; defines behavior for the less-than operator, &lt;.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__gt__</span>(self, other)</div>
                       <div class="column is-one-fifth">self &gt; other</div>
-                      <div class="column">operator.gt</div>
+                      <div class="column">operator.gt; defines behavior for the greater-than operator, &gt;.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__le__</span>(self, other)</div>
                       <div class="column is-one-fifth">self &lt;= other</div>
-                      <div class="column">operator.le</div>
+                      <div class="column">operator.le; defines behavior for the less-than equals operator, &lt;=.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__ge__</span>(self, other)</div>
                       <div class="column is-one-fifth">self &gt;= other</div>
-                      <div class="column">operator.ge</div>
+                      <div class="column">operator.ge; defines behavior for the greater-than equals operator, &gt;=.</div>
+                    </div>
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__bool__</span>(self)</div>
+                      <div class="column is-one-fifth">if self:</div>
+                      <div class="column">operator.truth; defines boolean conversion behavior for truth tests.</div>
                     </div>
                 </div>
               </div>
@@ -149,45 +174,57 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__pos__</span>(self)</div>
                       <div class="column is-one-fifth">+self</div>
-                      <div class="column">operator.pos</div>
+                      <div class="column">operator.pos; implements behavior for unary positive, +.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__neg__</span>(self)</div>
                       <div class="column is-one-fifth">-self</div>
-                      <div class="column">operator.neg</div>
+                      <div class="column">operator.neg; implements behavior for unary negative, -.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__abs__</span>(self)</div>
                       <div class="column is-one-fifth">abs(self)</div>
-                      <div class="column">operator.abs</div>
+                      <div class="column">operator.abs; implements behavior for the built in abs() function.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__inv__</span>(self)</div>
                       <div class="column is-one-fifth">~self</div>
-                      <div class="column">operator.inv</div>
+                      <div class="column">operator.inv; implements behavior for inversion using the ~ operator.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__round__</span>(self)</div>
-                      <div class="column">round(self)</div>
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__round__</span>(self, n)</div>
+                      <div class="column is-one-fifth">round(self, n)</div>
+                      <div class="column">
+                         implements behavior for the built-in round() function; n is the number of decimal places to round to.
+                      </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__floor__</span>(self)</div>
-                      <div class="column">math.floor(self)</div>
+                      <div class="column is-one-fifth">math.floor(self)</div>
+                      <div class="column">
+                        implements behavior for math.floor(), i.e., rounding down to the nearest integer.
+                      </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__ceil__</span>(self)</div>
-                      <div class="column">math.ceil(self)</div>
+                      <div class="column is-one-fifth">math.ceil(self)</div>
+                      <div class="column">
+                        implements behavior for math.ceil(), i.e., truncating to an integral.
+                      </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__trunc__</span>(self)</div>
-                      <div class="column">math.trunc(self)</div>
+                      <div class="column is-one-fifth">math.trunc(self)</div>
+                      <div class="column">
+                        implements behavior for math.trunc(), i.e., rounding down to the nearest integer.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -205,25 +242,25 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__add__</span>(self, other)</div>
                       <div class="column is-two-fifths">self + other</div>
-                      <div class="column">operator.add</div>
+                      <div class="column">operator.add; implements addition.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__sub__</span>(self, other)</div>
                       <div class="column is-two-fifths">self - other</div>
-                      <div class="column">operator.sub</div>
+                      <div class="column">operator.sub; implements subtraction.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__mul__</span>(self, other)</div>
                       <div class="column is-two-fifths">self * other</div>
-                      <div class="column">operator.mul</div>
+                      <div class="column">operator.mul; ; implements multiplication.</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__floordiv__</span>(self, other)</div>
                       <div class="column is-two-fifths">self // other</div>
-                      <div class="column">operator.floordiv or math.floor(operator.truediv)</div>
+                      <div class="column">operator.floordiv; implements integer division, i.e. math.floor(self/other).</div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
@@ -490,12 +527,19 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Type Conversion (int, long, float, complex, oct, hex, index, trunc, coerce)</p>
+                <p>Type Conversion (bool, int, long, float, complex, oct, hex, index, trunc)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="div-table">
+                    <div class="is-divider"></div>
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__bool__</span>(self)</div>
+                      <div class="column">
+                        Defines behavior for when bool() is called on an instance of your class. Should return True or False, depending on whether you would want to consider the instance to be True or False.
+                      </div>
+                    </div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__int__</span>(self, base=10)</div>
                       <div class="column">int(self, base)</div>
@@ -534,24 +578,6 @@
                         Called when math.trunc(self) is called. __trunc__ should return the value of `self truncated to an integral type (usually a long).
                       </div>
                     </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__coerce__</span>(self)</div>
-                      <div class="column">
-                        Method to implement mixed mode arithmetic. __coerce__ should return None if type conversion is impossible. Otherwise, it should return a pair (2-tuple) of self and other, manipulated to have the same type.
-                      </div>
-                    </div>
-                    <div class="column">
-                      <article class="message is-info">
-                        <div class="message-header">
-                          <p>Info</p>
-                          <button class="delete" aria-label="delete"></button>
-                        </div>
-                        <div class="message-body ">
-                          __coerce__ is deprecated in Python 3. 
-                        </div>
-                      </article>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -559,7 +585,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Representation & Format (str, repr, unicode, format, hash, bool, dir, sizeof)</p>
+                <p>Representation & Format (str, repr, bytes, format, hash, dir, sizeof)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -573,26 +599,15 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__repr__</span>(self)</div>
                       <div class="column">
-                        repr(self); The major difference between str() and repr() is intended audience. repr() is intended to produce output that is mostly machine-readable (in many cases, it could be valid Python code even), whereas str() is intended to be human-readable.
+                        repr(self); the major difference between str() and repr() is intended audience. repr() is intended to produce output that is mostly machine-readable (in many cases, it could be valid Python code even), whereas str() is intended to be human-readable.
                       </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__unicode__</span>(self)</div>
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__bytes__</span>(self)</div>
                       <div class="column">
-                        unicode(self); Defines behavior for when unicode() is called on an instance of your class.
+                        bytes(self); defines behavior for when bytes() is called on an instance of your class.
                       </div>
-                    </div>
-                    <div class="column">
-                      <article class="message is-info">
-                        <div class="message-header">
-                          <p>Note</p>
-                          <button class="delete" aria-label="delete"></button>
-                        </div>
-                        <div class="message-body ">
-                          __unicode__ is deprecated in Python 3. 
-                        </div>
-                      </article>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
@@ -607,24 +622,6 @@
                       <div class="column">
                         Defines behavior for when hash() is called on an instance of your class. It has to return an integer, and its result is used for quick key comparison in dictionaries. Note that this usually entails implementing __eq__ as well. Live by the following rule: a == b implies hash(a) == hash(b).
                       </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__bool__</span>(self)</div>
-                      <div class="column">
-                        Defines behavior for when bool() is called on an instance of your class. Should return True or False, depending on whether you would want to consider the instance to be True or False.
-                      </div>
-                    </div>
-                    <div class="column">
-                      <article class="message is-info">
-                        <div class="message-header">
-                          <p>Note</p>
-                          <button class="delete" aria-label="delete"></button>
-                        </div>
-                        <div class="message-body ">
-                          In Python 2 it's named __nonzero__; it was renamed to __bool__ in Python 3. 
-                        </div>
-                      </article>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
@@ -668,7 +665,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__getattr__</span>(self, name)</div>
                       <div class="column">
-                        self.&lt;name&gt;; You can define behavior for when a user attempts to access an attribute that doesn't exist (either at all or yet). This can be useful for catching and redirecting common misspellings, giving warnings about using deprecated attributes (you can still choose to compute and return that attribute, if you wish), or deftly handing an AttributeError. It only gets called when a nonexistent attribute is accessed, however, so it isn't a true encapsulation solution.
+                        self.name; You can define behavior for when a user attempts to access an attribute that doesn't exist (either at all or yet). This can be useful for catching and redirecting common misspellings, giving warnings about using deprecated attributes (you can still choose to compute and return that attribute, if you wish), or deftly handing an AttributeError. It only gets called when a nonexistent attribute is accessed, however, so it isn't a true encapsulation solution.
                       </div>
                     </div>
                     <div class="is-divider"></div>
@@ -692,7 +689,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Custom Sequence (len, getitem, setitem, delitem, iter, reversed, contains, missing)</p>
+                <p>Sequence (len, getitem, setitem, delitem, contains, missing)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -720,20 +717,6 @@
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__iter__</span>(self)</div>
-                      <div class="column">
-                        iter(self); Should return an iterator for the container. Iterators are returned in a number of contexts, most notably by the iter() built in function and when a container is looped over using the form for x in container:. Iterators are their own objects, and they also must define an __iter__ method that returns self.
-                      </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__reversed__</span>(self)</div>
-                      <div class="column">
-                        reversed(self); Called to implement behavior for the reversed() built in function. Should return a reversed version of the sequence. Implement this only if the sequence class is ordered, like list or tuple.
-                      </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__contains__</span>(self, item)</div>
                       <div class="column">
                          item in self; __contains__ defines behavior for membership tests using in and not in. Why isn't this part of a sequence protocol, you ask? Because when __contains__ isn't defined, Python just iterates over the sequence and returns True if it comes across the item it's looking for.
@@ -745,6 +728,41 @@
                       <div class="column">
                         __missing__ is used in subclasses of dict. It defines behavior for whenever a key is accessed that does not exist in a dictionary (so, for instance, if I had a dictionary d and said d["george"] when "george" is not a key in the dict, d.__missing__("george") would be called).
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Iterator (iter, next, reversed)</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <p>
+                    For additional information on <span class="is-italic">__iter__</span> & <span class="is-italic">__next__</span>; see <a href="" https://dbader.org/blog/python-iterators">Python Iterators: A Step-By-Step Introduction</a>.
+                  </p>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__iter__</span>(self)</div>
+                    <div class="column">
+                      iter(self); Should return an iterator for the container. Iterators are returned in a number of contexts, most notably by the iter() built in function and when a container is looped over using the form for x in container:. Iterators are their own objects, and they also must define an __iter__ method that returns self.
+                    </div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__reversed__</span>(self)</div>
+                    <div class="column">
+                      reversed(self); Called to implement behavior for the reversed() built in function. Should return a reversed version of the sequence. Implement this only if the sequence class is ordered, like list or tuple.
+                    </div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="div-table">
+                    <div class="columns is-gapless">
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__next__</span>(self)</div>
+                      <div class="column">next(self); Retrieves the next value from the iterator/generator; raises a StopIteration exception to signal when all available values in the iterator are exhausted.</div>
                     </div>
                   </div>
                 </div>
@@ -766,14 +784,16 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__instancecheck__</span>(self, instance)</div>
                       <div class="column">
-                        isinstance(self, instance); Checks if an instance is an instance of the class you defined (e.g. isinstance(instance, class).
+                        isinstance(self, instance); Checks if an instance is an instance of the class you defined
+                        (e.g. isinstance(instance, class).
                       </div>
                     </div>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__subclasscheck__</span>(self, subclass)</div>
                       <div class="column">
-                        issubclass(self, subclass); Checks if a class subclasses the class you defined (e.g. issubclass(subclass, class)).
+                        issubclass(self, subclass); Checks if a class subclasses the class you defined
+                        (e.g. issubclass(subclass, class)).
                       </div>
                     </div>
                   </div>
@@ -789,14 +809,16 @@
               <div class="accordion-body">
                 <div class="accordion-content">
                   <p>
-                    A special magic method in Python allows instances of your classes to behave as if they were functions, so that you can "call" them, pass them to functions that take functions as arguments, and so on.  __call__ can be particularly useful in classes with instances that need to often change state. "Calling" the instance can be an intuitive and elegant way to change the object's state.
+                    A special magic method in Python allows instances of your classes to behave as if they were functions, so that you
+                    can "call" them, pass them to functions that take functions as arguments, and so on.  __call__ can be particularly useful in classes with instances that need to often change state. "Calling" the instance can be an intuitive and elegant way to change the object's state.
                   </p>
                   <div class="is-divider"></div>
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__call__</span>(self, [args...])</div>
                       <div class="column">
-                        Allows an instance of a class to be called as a function. Essentially, this means that x() is the same as x.__call__(). Note that __call__ takes a variable number of arguments; this means that you define __call__ as you would any other function, taking however many arguments you'd like it to.
+                        Allows an instance of a class to be called as a function. Essentially, this means that x() is the same as
+                        x.__call__(). Note that __call__ takes a variable number of arguments; this means that you define __call__ as you would any other function, taking however many arguments you'd like it to.
                       </div>
                     </div>
                   </div>
@@ -994,223 +1016,130 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>How-To Invoke Magic Methods (Section 1)</p>
+                <p>Special Attributes (doc, name, qualname, module, defaults, code, globals, dict, closure, annotations, kwdefaults)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
-                  <div class="div-table">
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">Magic Method</div>
-                      <div class="column is-two-fifths has-text-weight-bold">When it gets invoked (example)</div>
-                      <div class="column has-text-weight-bold">Explanation</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">___new__(cls [,...])</div>
-                      <div class="column is-two-fifths">instance = MyClass(arg1, arg2)</div>
-                      <div class="column">__new__ is called on instance creation</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__init__(self [,...])</div>
-                      <div class="column is-two-fifths">instance = MyClass(arg1, arg2)</div>
-                      <div class="column">__new__ is called on instance creation</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">_cmp__(self, other)</div>
-                      <div class="column is-two-fifths">self == other, self &gt; other, etc.</div>
-                      <div class="column">Called for any comparison</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__pos__(self)</div>
-                      <div class="column is-two-fifths">+self</div>
-                      <div class="column">Unary plus sign</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__neg__(self)</div>
-                      <div class="column is-two-fifths">-self</div>
-                      <div class="column">Unary minus sign</div>
-                    </div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__invert__(self)</div>
-                      <div class="column is-two-fifths">~self</div>
-                      <div class="column">Bitwise inversion</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__index__(self)</div>
-                      <div class="column is-two-fifths">x[self]</div>
-                      <div class="column">Conversion when object is used as index</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__bool__(self)</div>
-                      <div class="column is-two-fifths">bool(self)</div>
-                      <div class="column">Boolean value of the object</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__getattr__(self, name)</div>
-                      <div class="column is-two-fifths">self.name # name doesn&#39;t exist</div>
-                      <div class="column">Accessing nonexistent attribute</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__setattr__(self, name, val)</div>
-                      <div class="column is-two-fifths">self.name = val</div>
-                      <div class="column">Assigning to an attribute</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__delattr__(self, name)</div>
-                      <div class="column is-two-fifths">del self.name</div>
-                      <div class="column">Deleting an attribute</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__getattribute__(self, name)</div>
-                      <div class="column is-two-fifths">self.name</div>
-                      <div class="column">Accessing any attribute</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__getitem__(self, key)</div>
-                      <div class="column is-two-fifths">self[key]</div>
-                      <div class="column">Accessing an item using an index</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__setitem__(self, key, val)</div>
-                      <div class="column is-two-fifths">self[key] = value</div>
-                      <div class="column">Assigning to an item using an index</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__delitem__(self, key)</div>
-                      <div class="column is-two-fifths">del self[key]</div>
-                      <div class="column">Deleting an item using an index</div>
-                    </div>
-                  </div>
+                  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>Attribute</th>
+                        <th> Meaning</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>__doc__</td>
+                        <td>The function’s documentation string, or None if unavailable; not inherited by subclasses</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__name__</td>
+                        <td>The function’s name</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__qualname__</td>
+                        <td>The function’s qualified name</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__module__</td>
+                        <td>The name of the module the function was defined in, or None if unavailable.</td>
+                        <td>witable</td>
+                      </tr>
+                      <tr>
+                        <td>__defaults__</td>
+                        <td>A tuple containing default argument values for those arguments that have defaults, or None if no arguments have a default value</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__code__</td>
+                        <td>The code object representing the compiled function body.</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__globals__</td>
+                        <td>A reference to the dictionary that holds the function’s global variables — the global namespace of the module in which the function was defined.</td>
+                        <td>read-only</td>
+                      </tr>
+                      <tr>
+                        <td>__dict__</td>
+                        <td>The namespace supporting arbitrary function attributes.</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__closure__</td>
+                        <td>None or a tuple of cells that contain bindings for the function’s free variables.</td>
+                        <td>read-only</td>
+                      </tr>
+                      <tr>
+                        <td>__annotations__</td>
+                        <td>A dict containing annotations of parameters. The keys of the dict are the parameter names, and 'return' for the return annotation, if provided.</td>
+                        <td>writable</td>
+                      </tr>
+                      <tr>
+                        <td>__kwdefaults__</td>
+                        <td>A dict containing defaults for keyword-only parameters.</td>
+                        <td>writable</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </article>
-
-            <article class="accordion">
-              <div class="accordion-header toggle">
-                <p>How-To Invoke Magic Methods (Section 2)</p>
-                <button class="toggle" aria-label="toggle"></button>
-              </div>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <div class="div-table">
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">Magic Method</div>
-                      <div class="column is-two-fifths has-text-weight-bold">When it gets invoked (example)</div>
-                      <div class="column has-text-weight-bold">Explanation</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__iter__(self)</div>
-                      <div class="column is-two-fifths">for x in self</div>
-                      <div class="column">Iteration</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__contains__(self, value)</div>
-                      <div class="column is-two-fifths">value in self, value not in self</div>
-                      <div class="column">Membership tests using in</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__call__(self [,...])</div>
-                      <div class="column is-two-fifths">self(args)</div>
-                      <div class="column">&quot;Calling&quot; an instance</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__enter__(self)</div>
-                      <div class="column is-two-fifths">with self as x:</div>
-                      <div class="column">with statement context managers</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__exit__(self, exc, val, trace)</div>
-                      <div class="column is-two-fifths">with self as x:</div>
-                      <div class="column">with statement context managers</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__getstate__(self)</div>
-                      <div class="column is-two-fifths">pickle.dump(pkl_file, self)</div>
-                      <div class="column">Pickling</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-two-fifths has-text-weight-bold">__setstate__(self)</div>
-                      <div class="column is-two-fifths">data = pickle.load(pkl_file)</div>
-                      <div class="column">Pickling</div>
-                    </div>
-                  </div>
               </div>
             </article>
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Python 2/3 Compatibility</p>
+                <p>Attribute Storage (slots)</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  For information on <span class="is-italic">__slots__</span>; <a href="https://chrisbarra.xyz/posts/let-me-introduce-slots/">let me introduce slots</a>.
+                </div>
+              </div>
+            </article>
+
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Changes from Python 2 to 3 (cmp, unicode, bytes, div, coerce, nonzero)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="div-table">
                     <div class="columns is-gapless">
-                      <div class="column is-one-fifth has-text-weight-bold">Python 2</div>
-                      <div class="column is-one-fifth has-text-weight-bold">Python 3</div>
-                      <div class="column has-text-weight-bold">Comments</div>
+                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__cmp__</span>(self, other)</div>
+                      <div class="column">
+                        Removed in Python 3; implements a default behavior for all of the comparison operators (&lt;, ==, !=, etc.), It's usually best to
+                        define each comparison you need rather than define them all at once, but __cmp__ can be a good way to save repetition and improve clarity when you need all comparisons implemented with similar criteria.
+                      </div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__unicode__</div>
-                      <div class="column is-one-fifth">N/A</div>
-                      <div class="column">Removed since <em>string</em> &amp; <em>unicode</em> are gone in Python 3</div>
-                    </div>
-                  </div>
-                  <div class="is-divider"></div>
-                  <div class="div-table">
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth has-text-weight-bold">N/A</div>
-                      <div class="column is-one-fifth">__bytes__</div>
-                      <div class="column">Behaves similarly to __str__ in Python 2.7</div>
+                      <div class="column">
+                        Replaced with <span class="is-italic">__bytes__</span> in Python 3 since a <span class="is-italic">str</span> is now unicode instead of bytes.
+                      </div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__div__</div>
-                      <div class="column is-one-fifth">N/A</div>
-                      <div class="column">Removed since division defaults to true division in Python 3</div>
+                      <div class="column">Removed in Python since division defaults to true.</div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__coerce__</div>
-                      <div class="column is-one-fifth">N/A</div>
-                      <div class="column">Removed due to redundant, confusing behavior</div>
-                    </div>
-                  </div>
-                  <div class="is-divider"></div>
-                  <div class="div-table">
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth has-text-weight-bold">__cmp__</div>
-                      <div class="column is-one-fifth">N/A</div>
-                      <div class="column">Removed due to redundancy</div>
+                      <div class="column">Removed in Python 3 due to redundant, confusing behavior.</div>
                     </div>
                   </div>
                   <div class="is-divider"></div>
@@ -1218,7 +1147,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth has-text-weight-bold">__nonzero__</div>
                       <div class="column is-one-fifth">__bool__</div>
-                      <div class="column">Renamed in Python 3</div>
+                      <div class="column">Renamed to <span class="is-italic">__bool__</span> in Python 3</div>
                     </div>
                   </div>
                 </div>
@@ -1227,11 +1156,6 @@
 
           </div>
         </section>
-        <div class="is-divider" data-content="Links to Python magic method tutorials"></div>
-          <p>
-            <a class="button is-link" href="https://rszalski.github.io/magicmethods">A guide to Python's magic methods</a>
-            <a class="button is-link" href="https://dbader.org/blog/python-dunder-methods">Python dunder methods</a>
-          </p>
         <div class="is-divider" data-content="Licensed under Creative Commons CC--NC-BY-SA"></div>
         <div class="columns">
           <div class="column is-one-quarter">
