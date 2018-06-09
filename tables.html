@@ -23,39 +23,40 @@
             <h1 class="title">Python Magic Methods</h1>
             <h6 class="subtitle is-6 is-italic">AKA special methods or dunder methods</h6>
             <p>
-              Adapted from Rafe Kettler's <span class="is-italic">A Guide to Python's Magic Methods</span> 
-              <a href="http://www.github.com/RafeKettler/magicmethods">project</a>. This page was primarily designed to serve as a comprehensive catalog of Python 3 magic methods grouped and neatly categorized all in one place.  If you're interested in learning more about magic methods consider visiting the links below.
+              In the tables below the left column shows how to invoke the magic method listed in the right column.  If you're interested in learning more about these magic methods consider visiting the links below.
             </p>
           </div>
          </div>
         <div class="field is-grouped is-grouped-multiline">
           <p class="control">
-            <a class="button is-small is-link is-outlined" href="https://dbader.org/blog/python-dunder-methods">
+            <a class="button is-small is-link is-link" href="https://dbader.org/blog/python-dunder-methods">
               <span class="icon is-small"><i class="fas fa-link"></i></span>
               <span>Enrich Your Python Classes With Dunder Methods</span>
             </a>
           </p>
 
           <p class="control">
-            <a class="button is-small is-link is-outlined" href="http://www.diveintopython3.net/special-method-names.html#divingin">
+            <a class="button is-small is-link is-link" href="http://www.diveintopython3.net/special-method-names.html#divingin">
               <span class="icon is-small"><i class="fas fa-link"></i></span>
               <span>Dive into Python 3: Special Method Names</span>
             </a>
           </p>
           <p class="control">
-            <a class="button is-small is-link is-outlined" href="https://rszalski.github.io/magicmethods">
+            <a class="button is-small is-link is-link" href="https://rszalski.github.io/magicmethods">
               <span class="icon is-small"><i class="fas fa-link"></i></span>
               <span>Guide to Python's Magic Methods</span>
             </a>
           </p>
           <p class="control">
-            <a class="button is-small is-link is-outlined" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">
+            <a class="button is-small is-link is-link" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">
               <span class="icon is-small"><i class="fas fa-link"></i></span>
               <span>Python Reference: Special Methods</span>
             </a>
           </p>
         </div>
-        <div class="is-divider"></div>
+        <p>
+          &nbsp;
+        </p>
         <div class="tabs is-boxed">
             <ul>
               <li>
@@ -83,15 +84,15 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x = MyClass()</td>
+                    <td class="has-text-weight-semibold">x = MyClass()</td>
                     <td>x.__new__()</td>
                   </tr>
                   <tr>
-                    <td>x = MyClass()</td>
+                    <td class="has-text-weight-semibold">x = MyClass()</td>
                     <td>x.__init__()</td>
                   </tr>
                   <tr>
-                    <td>del x</td>
+                    <td class="has-text-weight-semibold">del x</td>
                     <td>x.__del__()</td>
                   </tr>
                 </tbody>
@@ -109,15 +110,15 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>iter(seq)</td>
+                    <td class="has-text-weight-semibold">iter(seq)</td>
                     <td>seq.__iter__()</td>
                   </tr>
                   <tr>
-                    <td>next(seq)</td>
+                    <td class="has-text-weight-semibold">next(seq)</td>
                     <td>seq.__next__()</td>
                   </tr>
                   <tr>
-                    <td>reversed(seq)</td>
+                    <td class="has-text-weight-semibold">reversed(seq)</td>
                     <td>seq.__reversed__()</td>
                   </tr>
                 </tbody>
@@ -135,11 +136,11 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>len(x)</td>
+                    <td class="has-text-weight-semibold">len(x)</td>
                     <td>x.__len__()</td>
                   </tr>
                   <tr>
-                    <td>x in s</td>
+                    <td class="has-text-weight-semibold">x in s</td>
                     <td>s.__contains__(x)</td>
                   </tr>
                   <tr>
@@ -166,19 +167,19 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x.name</td>
+                    <td class="has-text-weight-semibold">x.name</td>
                     <td>x.__getattribute__('name')</td>
                   </tr>
                   <tr>
-                    <td>x.name = value</td>
+                    <td class="has-text-weight-semibold">x.name = value</td>
                     <td>x.__setattr__('name', value)</td>
                   </tr>
                   <tr>
-                    <td>del x.name</td>
+                    <td class="has-text-weight-semibold">del x.name</td>
                     <td>x.__delattr__('name')</td>
                   </tr>
                   <tr>
-                    <td>x.missing</td>
+                    <td class="has-text-weight-semibold">x.missing</td>
                     <td>x.__getattr__('missing')</td>
                   </tr>
                 </tbody>
@@ -196,19 +197,19 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x[key]</td>
+                    <td class="has-text-weight-semibold">x[key]</td>
                     <td>x.__getitem__(key)</td>
                   </tr>
                   <tr>
-                    <td>x[key] = value</td>
+                    <td class="has-text-weight-semibold">x[key] = value</td>
                     <td>x.__setitem__(key, value)</td>
                   </tr>
                   <tr>
-                    <td>del x[key]</td>
+                    <td class="has-text-weight-semibold">del x[key]</td>
                     <td>x.__delitem__(key)</td>
                   </tr>
                   <tr>
-                    <td>x[missing]</td>
+                    <td class="has-text-weight-semibold">x[missing]</td>
                     <td>x.__missing__(missing)</td>
                   </tr>
                 </tbody>
@@ -230,31 +231,31 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x == y</td>
+                    <td class="has-text-weight-semibold">x == y</td>
                     <td>x.__eq__(y)</td>
                   </tr>
                   <tr>
-                    <td>x != y</td>
+                    <td class="has-text-weight-semibold">x != y</td>
                     <td>x.__ne__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &lt; y</td>
+                    <td class="has-text-weight-semibold">x &lt; y</td>
                     <td>x.__lt__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &gt; y</td>
+                    <td class="has-text-weight-semibold">x &gt; y</td>
                     <td>x.__gt__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &lt;= y</td>
+                    <td class="has-text-weight-semibold">x &lt;= y</td>
                     <td>x.__le__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &gt;= y</td>
+                    <td class="has-text-weight-semibold">x &gt;= y</td>
                     <td>x.__ge__(y)</td>
                   </tr>
                   <tr>
-                    <td>if x:</td>
+                    <td class="has-text-weight-semibold">if x:</td>
                     <td>x.__bool__()</td>
                   </tr>
                   <tr>
@@ -276,31 +277,31 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>bool(x):</td>
+                    <td class="has-text-weight-semibold">bool(x):</td>
                     <td>x.__bool__()</td>
                   </tr>
                   <tr>
-                    <td>int(x)</td>
+                    <td class="has-text-weight-semibold">int(x)</td>
                     <td>x.__int__()</td>
                   </tr>
                   <tr>
-                    <td>float(x)</td>
+                    <td class="has-text-weight-semibold">float(x)</td>
                     <td>x.__float__()</td>
                   </tr>
                   <tr>
-                    <td>complex(x)</td>
+                    <td class="has-text-weight-semibold">complex(x)</td>
                     <td>x.__complex__()</td>
                   </tr>
                   <tr>
-                    <td>oct(x)</td>
+                    <td class="has-text-weight-semibold">oct(x)</td>
                     <td>x.__oct__()</td>
                   </tr>
                   <tr>
-                    <td>hex(x)</td>
+                    <td class="has-text-weight-semibold">hex(x)</td>
                     <td>x.__hex__()</td>
                   </tr>
                   <tr>
-                    <td>a_list[x]</td>
+                    <td class="has-text-weight-semibold">a_list[x]</td>
                     <td>a_list[x.__index__()]</td>
                   </tr>
                   <tr>
@@ -322,35 +323,35 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>+x</td>
+                    <td class="has-text-weight-semibold">+x</td>
                     <td>x.__pos__()</td>
                   </tr>
                   <tr>
-                    <td>-x</td>
+                    <td class="has-text-weight-semibold">-x</td>
                     <td>x.__neg__()</td>
                   </tr>
                   <tr>
-                    <td>abs(x)</td>
+                    <td class="has-text-weight-semibold">abs(x)</td>
                     <td>x.__abs__()</td>
                   </tr>
                   <tr>
-                    <td>~x</td>
+                    <td class="has-text-weight-semibold">~x</td>
                     <td>x.__invert__()</td>
                   </tr>
                   <tr>
-                    <td>round(x)</td>
+                    <td class="has-text-weight-semibold">round(x)</td>
                     <td>x.__round__()</td>
                   </tr>
                   <tr>
-                    <td>math.floor(x)</td>
+                    <td class="has-text-weight-semibold">math.floor(x)</td>
                     <td>x.__floor__()</td>
                   </tr>
                   <tr>
-                    <td>math.ceil(x)</td>
+                    <td class="has-text-weight-semibold">math.ceil(x)</td>
                     <td>x.__ceil__()</td>
                   </tr>
                   <tr>
-                    <td>math.trunc(x)</td>
+                    <td class="has-text-weight-semibold">math.trunc(x)</td>
                     <td>x.__trunc__()</td>
                   </tr>
                 </tbody>
@@ -372,55 +373,55 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x + y</td>
+                    <td class="has-text-weight-semibold">x + y</td>
                     <td>x.__add__(y)</td>
                   </tr>
                   <tr>
-                    <td>x - y</td>
+                    <td class="has-text-weight-semibold">x - y</td>
                     <td>x.__sub__(y)</td>
                   </tr>
                   <tr>
-                    <td>x * y</td>
+                    <td class="has-text-weight-semibold">x * y</td>
                     <td>x.__mul__(y)</td>
                   </tr>
                   <tr>
-                    <td>x // y</td>
+                    <td class="has-text-weight-semibold">x // y</td>
                     <td>x.__floordiv__(y)</td>
                   </tr>
                   <tr>
-                    <td>x / y</td>
+                    <td class="has-text-weight-semibold">x / y</td>
                     <td>x.__truediv__(y)</td>
                   </tr>
                   <tr>
-                    <td>x % y</td>
+                    <td class="has-text-weight-semibold">x % y</td>
                     <td>x.__mod__(y)</td>
                   </tr>
                   <tr>
-                    <td>divmod(x, y)</td>
+                    <td class="has-text-weight-semibold">divmod(x, y)</td>
                     <td>x.__divmod__(y)</td>
                   </tr>
                   <tr>
-                    <td>x ** y</td>
+                    <td class="has-text-weight-semibold">x ** y</td>
                     <td>x.__pow__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &lt;&lt; y</td>
+                    <td class="has-text-weight-semibold">x &lt;&lt; y</td>
                     <td>x.__lshift__(y)</td>
                   </tr>
                   <tr>
-                    <td>x >> y</td>
+                    <td class="has-text-weight-semibold">x >> y</td>
                     <td>x.__rshift__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &amp; y</td>
+                    <td class="has-text-weight-semibold">x &amp; y</td>
                     <td>x.__and__(y)</td>
                   </tr>
                   <tr>
-                    <td>x | y</td>
+                    <td class="has-text-weight-semibold">x | y</td>
                     <td>x.__or__(y)</td>
                   </tr>
                   <tr>
-                    <td>x ^ y</td>
+                    <td class="has-text-weight-semibold">x ^ y</td>
                     <td>x.__xor__(y)</td>
                   </tr>
                 </tbody>
@@ -438,55 +439,55 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x + y</td>
+                    <td class="has-text-weight-semibold">x + y</td>
                     <td>y.__radd__(x)</td>
                   </tr>
                   <tr>
-                    <td>x - y</td>
+                    <td class="has-text-weight-semibold">x - y</td>
                     <td>y.__rsub__(x)</td>
                   </tr>
                   <tr>
-                    <td>x * y</td>
+                    <td class="has-text-weight-semibold">x * y</td>
                     <td>y.__rmul__(x)</td>
                   </tr>
                   <tr>
-                    <td>x // y</td>
+                    <td class="has-text-weight-semibold">x // y</td>
                     <td>y.__rfloordiv__(x)</td>
                   </tr>
                   <tr>
-                    <td>x / y</td>
+                    <td class="has-text-weight-semibold">x / y</td>
                     <td>y.__rtruediv__(x)</td>
                   </tr>
                   <tr>
-                    <td>x % y</td>
+                    <td class="has-text-weight-semibold">x % y</td>
                     <td>y.__rmod__(x)</td>
                   </tr>
                   <tr>
-                    <td>divmod(x, y)</td>
+                    <td class="has-text-weight-semibold">divmod(x, y)</td>
                     <td>y.__rdivmod__(x)</td>
                   </tr>
                   <tr>
-                    <td>x ** y</td>
+                    <td class="has-text-weight-semibold">x ** y</td>
                     <td>y.__rpow__(x)</td>
                   </tr>
                   <tr>
-                    <td>x &lt;&lt; y</td>
+                    <td class="has-text-weight-semibold">x &lt;&lt; y</td>
                     <td>y.__rlshift__(x)</td>
                   </tr>
                   <tr>
-                    <td>x &gt;&gt; y</td>
+                    <td class="has-text-weight-semibold">x &gt;&gt; y</td>
                     <td>y.__rrshift__(x)</td>
                   </tr>
                   <tr>
-                    <td>x &amp; y</td>
+                    <td class="has-text-weight-semibold">x &amp; y</td>
                     <td>y.__rand__(x)</td>
                   </tr>
                   <tr>
-                    <td>x | y</td>
+                    <td class="has-text-weight-semibold">x | y</td>
                     <td>y.__ror__(x)</td>
                   </tr>
                   <tr>
-                    <td>x ^ y</td>
+                    <td class="has-text-weight-semibold">x ^ y</td>
                     <td>y.__rxor__(x)</td>
                   </tr>
                 </tbody>
@@ -504,27 +505,27 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x += y</td>
+                    <td class="has-text-weight-semibold">x += y</td>
                     <td>x.__iadd__(y)</td>
                   </tr>
                   <tr>
-                    <td>x -= y</td>
+                    <td class="has-text-weight-semibold">x -= y</td>
                     <td>x.__isub__(y)</td>
                   </tr>
                   <tr>
-                    <td>x *= y</td>
+                    <td class="has-text-weight-semibold">x *= y</td>
                     <td>x.__imul__(y)</td>
                   </tr>
                   <tr>
-                    <td>x //= y</td>
+                    <td class="has-text-weight-semibold">x //= y</td>
                     <td>x.__ifloordiv__(y)</td>
                   </tr>
                   <tr>
-                    <td>x /= y</td>
+                    <td class="has-text-weight-semibold">x /= y</td>
                     <td>x.__itruediv__(y)</td>
                   </tr>
                   <tr>
-                    <td>x %= y</td>
+                    <td class="has-text-weight-semibold">x %= y</td>
                     <td>x.__imod__(y)</td>
                   </tr>
                   <tr>
@@ -532,27 +533,27 @@
                     <td class="has-text-weight-light">Not Implemented</td>
                   </tr>
                   <tr>
-                    <td>x **= y</td>
+                    <td class="has-text-weight-semibold">x **= y</td>
                     <td>x.__ipow__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &lt;&lt;= y</td>
+                    <td class="has-text-weight-semibold">x &lt;&lt;= y</td>
                     <td>x.__ilshift__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &gt;&gt;= y</td>
+                    <td class="has-text-weight-semibold">x &gt;&gt;= y</td>
                     <td>x.__irshift__(y)</td>
                   </tr>
                   <tr>
-                    <td>x &amp;= y</td>
+                    <td class="has-text-weight-semibold">x &amp;= y</td>
                     <td>x.__iand__(y)</td>
                   </tr>
                   <tr>
-                    <td>x |= y</td>
+                    <td class="has-text-weight-semibold">x |= y</td>
                     <td>x.__ior__(y)</td>
                   </tr>
                   <tr>
-                    <td>x ^= y</td>
+                    <td class="has-text-weight-semibold">x ^= y</td>
                     <td>x.__ixor__(y)</td>
                   </tr>
                 </tbody>
@@ -573,31 +574,31 @@
               <table class="table is-bordered is-fullwidth">
             <tbody>
                   <tr>
-                    <td>str(x)</td>
+                    <td class="has-text-weight-semibold">str(x)</td>
                     <td>x.__str__()</td>
                   </tr>
                   <tr>
-                    <td>repr(x)</td>
+                    <td class="has-text-weight-semibold">repr(x)</td>
                     <td>x.__repr__()</td>
                   </tr>
                   <tr>
-                    <td>bytes(x)</td>
+                    <td class="has-text-weight-semibold">bytes(x)</td>
                     <td>x.__bytes__()</td>
                   </tr>
                   <tr>
-                    <td>format(x, format_spec)</td>
+                    <td class="has-text-weight-semibold">format(x, format_spec)</td>
                     <td>x.__format__(format_spec)</td>
                   </tr>
                   <tr>
-                    <td>hash(x)</td>
+                    <td class="has-text-weight-semibold">hash(x)</td>
                     <td>x.__hash__()</td>
                   </tr>
                   <tr>
-                    <td>dir(x)</td>
+                    <td class="has-text-weight-semibold">dir(x)</td>
                     <td>x.__dir__()</td>
                   </tr>
                   <tr>
-                    <td>sizeof(x)</td>
+                    <td class="has-text-weight-semibold">sizeof(x)</td>
                     <td>x.__sizeof__()</td>
                   </tr>
                 </tbody>
@@ -615,24 +616,32 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x = pickle.load(file)</td>
+                    <td class="has-text-weight-semibold">x = pickle.load(file)</td>
                     <td>x.__getnewargs__()</td>
                   </tr>
                   <tr>
-                    <td>pickle.dump(x file)</td>
+                    <td class="has-text-weight-semibold">pickle.dump(x file)</td>
                     <td>x.__getstate__()</td>
                   </tr>
                   <tr>
-                    <td>x = pickle.load(file)</td>
+                    <td class="has-text-weight-semibold">x = pickle.load(file)</td>
                     <td>x.__setstate__()</td>
                   </tr>
                   <tr>
-                    <td>pickle.dump(x, file)</td>
+                    <td class="has-text-weight-semibold">pickle.dump(x, file)</td>
                     <td>x.__reduce__()</td>
                   </tr>
                   <tr>
-                    <td>pickle.dump(x, file protocol_ver)</td>
+                    <td class="has-text-weight-semibold">pickle.dump(x, file protocol_ver)</td>
                     <td>x.__reduce_ex__(protocol_ver)</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                   </tr>
                 </tbody>
               </table>
@@ -674,11 +683,11 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>copy.copy(x)</td>
+                    <td class="has-text-weight-semibold">copy.copy(x)</td>
                     <td>x.__copy__()</td>
                   </tr>
                   <tr>
-                    <td>copy.deepcopy(x)</td>
+                    <td class="has-text-weight-semibold">copy.deepcopy(x)</td>
                     <td>x.__deepcopy__()</td>
                   </tr>
                 </tbody>
@@ -699,15 +708,15 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>x()</td>
+                    <td class="has-text-weight-semibold">x()</td>
                     <td>x.__call__()</td>
                   </tr>
                   <tr>
-                    <td>help(x)</td>
+                    <td class="has-text-weight-semibold">help(x)</td>
                     <td>x.__doc__()</td>
                   </tr>
                   <tr>
-                    <td>dir(x)</td>
+                    <td class="has-text-weight-semibold">dir(x)</td>
                     <td>x.__dir__()</td>
                   </tr>
                 </tbody>
@@ -725,15 +734,15 @@
               <table class="table is-bordered is-fullwidth">
                 <tbody>
                   <tr>
-                    <td>isinstance(x, MyClass)</td>
+                    <td class="has-text-weight-semibold">isinstance(x, MyClass)</td>
                     <td>MyClass.__instancecheck__(x)</td>
                   </tr>
                   <tr>
-                    <td>issubclass(C, MyClass)</td>
+                    <td class="has-text-weight-semibold">issubclass(C, MyClass)</td>
                     <td>MyClass.__subclasscheck__(C)</td>
                   </tr>
                   <tr>
-                    <td>issubclass(C, MyABC)</td>
+                    <td class="has-text-weight-semibold">issubclass(C, MyABC)</td>
                     <td>MyABC.__subclasshook__(C)</td>
                   </tr>
                 </tbody>
