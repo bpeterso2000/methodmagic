@@ -23,32 +23,32 @@
             <h6 class="subtitle is-6 is-italic">AKA special methods or dunder methods</h6>
             <p>
               Adapted from Rafe Kettler's <span class="is-italic">A Guide to Python's Magic Methods</span> 
-              <a href="http://www.github.com/RafeKettler/magicmethods">project</a>. This page was primarily designed to serve as a comprehensive catalog of Python 3 magic methods grouped and neatly categorized all in one place.  If you're interested in learning more about these magic methods consider visiting the links below.
+              <a href="http://www.github.com/RafeKettler/magicmethods">project</a>. This page is primarily designed to serve as a comprehensive catalog of Python 3 magic methods grouped and neatly categorized all in one place.  If you're interested in learning more about these magic methods consider visiting the links below.
             </p>
           </div>
          </div>
-        <div class="field is-grouped is-grouped-multiline">
-          <p class="control">
-            <a class="button is-small is-link is-link" href="https://dbader.org/blog/python-dunder-methods">
-              <span class="icon is-small"><i class="fas fa-link"></i></span>
-              <span>Enrich Your Python Classes With Dunder Methods</span>
-            </a>
-          </p>
+         <div class="field is-grouped is-grouped-multiline">
+           <p class="control">
+             <a class="button is-small is-link" href="https://dbader.org/blog/python-dunder-methods">
+               <span class="icon is-small"><i class="fas fa-link"></i></span>
+               <span>Enrich Your Python Classes With Dunder Methods</span>
+             </a>
+           </p>
 
+           <p class="control">
+             <a class="button is-small is-link" href="http://www.diveintopython3.net/special-method-names.html#divingin">
+               <span class="icon is-small"><i class="fas fa-link"></i></span>
+               <span>Dive into Python 3: Special Method Names</span>
+             </a>
+           </p>
+           <p class="control">
+             <a class="button is-small is-link" href="https://rszalski.github.io/magicmethods">
+               <span class="icon is-small"><i class="fas fa-link"></i></span>
+               <span>Guide to Python's Magic Methods</span>
+             </a>
+           </p>
           <p class="control">
-            <a class="button is-small is-link is-link" href="http://www.diveintopython3.net/special-method-names.html#divingin">
-              <span class="icon is-small"><i class="fas fa-link"></i></span>
-              <span>Dive into Python 3: Special Method Names</span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-small is-link is-link" href="https://rszalski.github.io/magicmethods">
-              <span class="icon is-small"><i class="fas fa-link"></i></span>
-              <span>Guide to Python's Magic Methods</span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="button is-small is-link is-link" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">
+            <a class="button is-small is-link" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">
               <span class="icon is-small"><i class="fas fa-link"></i></span>
               <span>Python Reference: Special Methods</span>
             </a>
@@ -85,7 +85,7 @@
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__new__</span>(cls, ...)</div>
                       <div class="column">
                         Called before <span class="is-italic">__init__</span>. It takes the class, then any other arguments that it will pass along to
-                        <span class="is-italic">__init__</span>. The <span class="is-italic">__new__</span> method is rarely included in Python class definitions but is useful when subclassing an immutable type like a tuple or a string.
+                        <span class="is-italic">__init__</span>. The <span class="is-italic">__new__</span> method is rarely used in Python class definitions except when subclassing an immutable type like a tuple or a string.
                         See the <a href="https://docs.python.org/3/reference/datamodel.html#object.__new__">Python docs</a> for details.
                       </div>
                     </div>
@@ -349,7 +349,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Reflective Operators (radd, rsub, rmul, rfloordiv, rtruediv, rmod, rdivmod, rpow, rlshift, rrshift, rand, ror, rxor)</p>
+                <p>Reflective Operators (radd, rsub, rmul, rfloordiv, rtruediv, rmod, rdivmod, rpow)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -407,7 +407,19 @@
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__rpow__</span>(self, other)</div>
                       <div class="column">other ** self</div>
                     </div>
-                    <div class="is-divider"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Reflective Bitwise Operators (rlshift, rrshift, rand, ror, rxor)</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__rlshift__</span>(self, other)</div>
                       <div class="column">other &lt;&lt; self</div>
@@ -439,7 +451,7 @@
 
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Augmented Assignment Operators (iadd, isub, imul, ifloordiv, itruediv, imod, ipow, ilshift, irshift, iand, ior, ixor)</p>
+                <p>Augmented Assignment Operators (iadd, isub, imul, ifloordiv, itruediv, imod, ipow)</p>
                 <button class="toggle" aria-label="toggle"></button>
               </div>
               <div class="accordion-body">
@@ -504,36 +516,46 @@
                       <div class="column is-one-fifth">self **= other</div>
                       <div class="column">operator.ipow</div>
                     </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__ilshift__</span>(self, other)</div>
-                      <div class="column is-one-fifth">self &lt;&lt;= other</div>
-                      <div class="column">operator.ilshift</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__irshift__</span>(self, other)</div>
-                      <div class="column is-one-fifth">self &gt;&gt;= other</div>
-                      <div class="column">operator.irshift</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__iand__</span>(self, other)</div>
-                      <div class="column is-one-fifth">self &= other</div>
-                      <div class="column">operator.iand</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__ior__</span>(self, other)</div>
-                      <div class="column is-one-fifth">self |= other</div>
-                      <div class="column">operator.ior</div>
-                    </div>
-                    <div class="is-divider"></div>
-                    <div class="columns is-gapless">
-                      <div class="column is-one-fifth"><span class="has-text-weight-bold">__ixor__</span>(self, other)</div>
-                      <div class="column is-one-fifth">self ^= other</div>
-                      <div class="column">operator.ixor</div>
-                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Augmented Bitwise Operators (ilshift, irshift, iand, ior, ixor)</p>
+                <button class="toggle" aria-label="toggle"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__ilshift__</span>(self, other)</div>
+                    <div class="column is-one-fifth">self &lt;&lt;= other</div>
+                    <div class="column">operator.ilshift</div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__irshift__</span>(self, other)</div>
+                    <div class="column is-one-fifth">self &gt;&gt;= other</div>
+                    <div class="column">operator.irshift</div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__iand__</span>(self, other)</div>
+                    <div class="column is-one-fifth">self &= other</div>
+                    <div class="column">operator.iand</div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__ior__</span>(self, other)</div>
+                    <div class="column is-one-fifth">self |= other</div>
+                    <div class="column">operator.ior</div>
+                  </div>
+                  <div class="is-divider"></div>
+                  <div class="columns is-gapless">
+                    <div class="column is-one-fifth"><span class="has-text-weight-bold">__ixor__</span>(self, other)</div>
+                    <div class="column is-one-fifth">self ^= other</div>
+                    <div class="column">operator.ixor</div>
                   </div>
                 </div>
               </div>
@@ -551,7 +573,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__bool__</span>(self)</div>
                       <div class="column">
-                        Defines behavior for when bool() is called on an instance of your class. Should return True or False, depending on whether you would want to consider the instance to be True or False.
+                        Defines behavior for when bool() is called on an instance of your class. Should return True or False.
                       </div>
                     </div>
                     <div class="columns is-gapless">
@@ -740,7 +762,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__contains__</span>(self, item)</div>
                       <div class="column">
-                         item in self; __contains__ defines behavior for membership tests using in and not in. Why isn't this part of a sequence protocol, you ask? Because when __contains__ isn't defined, Python just iterates over the sequence and returns True if it comes across the item it's looking for.
+                         item in self; __contains__ defines behavior for membership tests using in and not in.  When __contains__ isn't defined, Python just iterates over the sequence and returns True if it comes across the item it's looking for.
                       </div>
                     </div>
                     <div class="is-divider"></div>
@@ -763,7 +785,7 @@
               <div class="accordion-body">
                 <div class="accordion-content">
                   <p>
-                    For additional information on <span class="is-italic">__iter__</span> & <span class="is-italic">__next__</span>; see <a href="" https://dbader.org/blog/python-iterators">Python Iterators: A Step-By-Step Introduction</a>.
+                    For additional information on <span class="is-italic">__iter__</span> & <span class="is-italic">__next__</span>; see <a href="https://dbader.org/blog/python-iterators">Python Iterators: A Step-By-Step Introduction</a>.
                   </p>
                   <div class="is-divider"></div>
                   <div class="columns is-gapless">
@@ -813,8 +835,7 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__subclasscheck__</span>(self, subclass)</div>
                       <div class="column">
-                        issubclass(self, subclass); Checks if a class subclasses the class you defined
-                        (e.g. issubclass(subclass, class).
+                        issubclass(self, subclass); Checks if a class subclasses the class you defined.
                       </div>
                     </div>
                     <div class="is-divider"></div>
@@ -869,8 +890,19 @@
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__enter__</span>(self)</div>
                       <div class="column">
-                       Defines what the context manager should do at the beginning of the block created by the "with" statement. Note that the return value of __enter__ is bound to the target of the with statement, or the name after the as.  __enter__ and __exit__ can be useful for specific classes that have well-defined and common behavior for setup and cleanup. You can also use these methods to create generic context managers that wrap other objects.
+                       Defines what the context manager should do at the beginning of the block created by the "with" statement. __enter__ and __exit__ can be useful for specific classes that have well-defined and common behavior for setup and cleanup. You can also use these methods to create generic context managers that wrap other objects.
                       </div>
+                    </div>
+                    <div class="column">
+                      <article class="message is-info">
+                        <div class="message-header">
+                          <p>Note</p>
+                          <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body ">
+                          The return value of __enter__ is bound to the target of the with statement, or the name after the as. 
+                        </div>
+                      </article>
                     </div>
                   </div>
                   <div class="is-divider"></div>
@@ -908,14 +940,14 @@
               <div class="accordion-body">
                 <div class="accordion-content">
                   <p>
-                    Descriptors are classes which, when accessed through either getting, setting, or deleting, can also alter other objects. Descriptors aren't meant to stand alone; rather, they're meant to be held by an owner class. Descriptors can be useful when building object-oriented databases or classes that have attributes whose values are dependent on each other. Descriptors are particularly useful when representing attributes in several different units of measurement or representing computed attributes (like distance from the origin in a class to represent a point on a grid).
+                    Descriptors are classes which, when accessed through either getting, setting, or deleting, can also alter other objects. Descriptors aren't meant to stand alone; rather, they're meant to be held by an owner class. Descriptors can be useful when building object-oriented databases or classes that have attributes whose values are dependent on each other. Descriptors are particularly useful when representing attributes in several different units of measurement or representing computed attributes, like distance from the origin in a class to represent a point on a grid.
                   </p>
                   <div class="is-divider"></div>
                   <div class="div-table">
                     <div class="columns is-gapless">
                       <div class="column is-one-fifth"><span class="has-text-weight-bold">__get__</span>(self, instance, owner)</div>
                       <div class="column">
-                       Defines what the context manager should do at the beginning of the block created by the "with" statement. Note that the return value of __enter__ is bound to the target of the with statement, or the name after the as.  __enter__ and __exit__ can be useful for specific classes that have well-defined and common behavior for setup and cleanup. You can also use these methods to create generic context managers that wrap other objects.
+                       Defines what the context manager should do at the beginning of the block created by the <span class="is-italic">with</span> statement. Note that the return value of __enter__ is bound to the target of the with statement, or the name after the as.  __enter__ and __exit__ can be useful for specific classes that have well-defined and common behavior for setup and cleanup. You can also use these methods to create generic context managers that wrap other objects.
                       </div>
                     </div>
                   </div>
@@ -974,7 +1006,7 @@
                 <div class="accordion-content">
                   <div class="div-table">
                     <p>
-                      Pickling is a serialization process for Python data structures, and can be incredibly useful when you need to store an object and retrieve it later (usually for caching). It's also a major source of worries and confusion.  Say you have a dictionary that you want to store and retrieve later. You could write it's contents to a file, carefully making sure that you write correct syntax, then retrieve it using either exec() or processing the file input. But this is precarious at best: if you store important data in plain text, it could be corrupted or changed in any number of ways to make your program crash or worse run malicious code on your computer. Instead, pickle it.
+                      Pickling is a serialization process for Python data structures and can be incredibly useful when you need to store an object and retrieve it later; it's particularly useful for caching.
                     </p>
                     <div class="column">
                       <article class="message is-warning">
@@ -983,12 +1015,12 @@
                           <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body ">
-                          Pickling is not perfect. Pickle files are easily corrupted on accident and on purpose. Pickling may be more secure than using flat text files, but it still can be used to run malicious code. It's also incompatible across different versions of Python, so don't expect to distribute pickled objects and expect people to be able to open them. However, it can also be a powerful tool for caching and other common serialization tasks.
+                          Pickling is not perfect, and while much better than using flat text files, it can still be used to run malicious code. It's also incompatible across different versions of Python. Despite these drawbacks, pickling is a powerful tool for caching and general serialization tasks.
                         </div>
                       </article>
                     </div>
                     <p>
-                      Pickling isn't just for built-in types. It's for any class that follows the pickle protocol. The pickle protocol has four optional methods for Python objects to customize how they act.
+                      Pickling isn't just for built-in types; it's for any class that follows the pickle protocol. The pickle protocol has four optional methods for Python objects to customize how they act.
                     </p>
                     <div class="is-divider"></div>
                     <div class="columns is-gapless">
@@ -1208,7 +1240,7 @@
             </a>
           </div>
           <div class="column is-one-fifth">
-            <img src="https://bulma.io/images/made-with-bulma.png">
+            <a href="https://bulma.io/"><img src="https://bulma.io/images/made-with-bulma.png" alt="Bulma logo"></a>
           </div>
         </div>
       </div>
